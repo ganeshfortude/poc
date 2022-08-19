@@ -7,13 +7,13 @@ body {
   margin: 0;
 }
 
-my-app {
+app-root {
   display: block;
   box-sizing: border-box;
   padding: 30px;
 }
 
-my-app > .k-icon.k-i-loading {
+app-root > .k-icon.k-i-loading {
   font-size: 64px;
   position: absolute;
   top: 50%;

@@ -1,0 +1,55 @@
+<div class="wrapper">
+  <kendo-tabstrip (tabSelect)="onTabSelect($event)">
+    <kendo-tabstrip-tab title="Style">
+      <ng-template kendoTabContent>
+        <div class="content">
+
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="KIT/PACK">
+      <ng-template kendoTabContent>
+        <div class="content">
+
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="Variants">
+      <ng-template kendoTabContent>
+        <div class="content">
+
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="Manage SKU's">
+      <ng-template kendoTabContent>
+        <div class="content">
+
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="Copy Styles">
+      <ng-template kendoTabContent>
+        <div class="content">
+
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="Operational BOM" [selected]="true">
+      <ng-template kendoTabContent>
+        <div class="content">
+
+          <app-operation-bom-home></app-operation-bom-home>
+
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="BOM">
+      <ng-template kendoTabContent>
+        <div class="content">
+
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+  </kendo-tabstrip>
+</div>

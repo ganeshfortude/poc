@@ -1,0 +1,9 @@
+
+
+.headerCustomClass {
+    color: #fff;
+}
+
+th.headerCustomClass {
+    text-align: right;
+}

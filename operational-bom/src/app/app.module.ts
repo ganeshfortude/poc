@@ -10,10 +10,11 @@ import { LabelModule } from '@progress/kendo-angular-label';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { AppComponent } from './app.component';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { OperationalBomModule } from './operational-bom/operational-bom.module';
 
 
 @NgModule({
-    imports:      [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
@@ -23,7 +24,8 @@ import { GridModule } from '@progress/kendo-angular-grid';
         LabelModule,
         ButtonsModule,
         DropDownsModule,
-        GridModule
+        GridModule,
+        OperationalBomModule
     ],
     declarations: [AppComponent],
     bootstrap:    [AppComponent]

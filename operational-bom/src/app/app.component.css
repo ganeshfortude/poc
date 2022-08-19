@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    justify-content: left;
+}
+
+kendo-tabstrip {
+    width: 800px;
+}
+
+.content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+}
+
+h2 {
+    font-size: 4em;
+    font-weight: lighter;
+}
+
+h2 > span {
+    padding-left: 5px;
+    font-size: .3em;
+    vertical-align: top;
+}
