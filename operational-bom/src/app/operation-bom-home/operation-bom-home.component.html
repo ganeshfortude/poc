@@ -1,0 +1,40 @@
+<kendo-grid [data]="gridData" [height]="300">
+  <kendo-grid-column
+    field="color"
+    title="Color"
+    [width]="150"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+  </kendo-grid-column>
+  <kendo-grid-column
+    field="smv"
+    title="SMV"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+  </kendo-grid-column>
+  <kendo-grid-column
+    field="operationType"
+    title="Operation Type"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+  </kendo-grid-column>
+  <kendo-grid-column
+    field="action"
+    title="Action"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <button
+        kendoButton
+        [primary]="true"
+        routerLink="/create"
+      >
+        ADD
+      </button>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

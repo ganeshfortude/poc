@@ -4,7 +4,7 @@
 }
 
 kendo-tabstrip {
-    width: 800px;
+    width: 1400px;
 }
 
 .content {
@@ -29,3 +29,4 @@ h2 > span {
     font-size: .3em;
     vertical-align: top;
 }
+

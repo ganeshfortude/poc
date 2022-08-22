@@ -1,0 +1,18 @@
+.headerCustomClass {
+    color: #fff;
+}
+
+th.headerCustomClass {
+    text-align: right;
+}
+
+kendo-tabstrip.k-tabstrip .k-content.k-state-active {
+    display: none;
+}
+
+.k-tabstrip .k-content.k-state-active {
+    border-top: none;
+}
+.k-grid tr.dragging {
+    background-color: #f45c42;
+}

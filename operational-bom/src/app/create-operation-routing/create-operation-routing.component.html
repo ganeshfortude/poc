@@ -1,0 +1,56 @@
+<kendo-grid [data]="gridData"
+            [height]="300"
+            [pageable]="true"
+            [skip]="state.skip"
+            [pageSize]="state.take"
+            [rowClass]="rowCallback"
+            (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-column title="#">
+    <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
+      {{ rowIndex + 1 }}</ng-template
+    >
+  </kendo-grid-column>
+  <kendo-grid-column
+    field="operationId"
+    title="Operation Id"
+    [width]="150"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+  </kendo-grid-column>
+  <kendo-grid-column
+    field="operationName"
+    title="Operation Name"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+  </kendo-grid-column>
+  <kendo-grid-column
+    field="operationType"
+    title="Operation Type"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+  </kendo-grid-column>
+  <kendo-grid-column
+    field="department"
+    title="Department"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+  </kendo-grid-column>
+  <kendo-grid-column
+    field="smv"
+    title="SMV"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+  </kendo-grid-column>
+  <kendo-grid-column
+    field="sequence"
+    title="Sequence/Parallel"
+    [headerStyle]="{ 'background-color': '#32a852' }"
+    [headerClass]="'headerCustomClass'"
+  >
+  </kendo-grid-column>
+</kendo-grid>

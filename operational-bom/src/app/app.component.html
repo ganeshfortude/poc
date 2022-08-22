@@ -35,12 +35,10 @@
         </div>
       </ng-template>
     </kendo-tabstrip-tab>
-    <kendo-tabstrip-tab title="Operational BOM" [selected]="true">
+    <kendo-tabstrip-tab title="Operational BOM" [selected]="true" routerLink="">
       <ng-template kendoTabContent>
         <div class="content">
-
-          <app-operation-bom-home></app-operation-bom-home>
-
+          <router-outlet></router-outlet>
         </div>
       </ng-template>
     </kendo-tabstrip-tab>

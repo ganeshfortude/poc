@@ -10,24 +10,32 @@ import { LabelModule } from '@progress/kendo-angular-label';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { AppComponent } from './app.component';
 import { GridModule } from '@progress/kendo-angular-grid';
-import { OperationalBomModule } from './operational-bom/operational-bom.module';
+import { AppRoutingModule } from './app-routing-module';
+import { OperationBomHomeComponent } from './operation-bom-home/operation-bom-home.component';
+import { APP_BASE_HREF } from '@angular/common';
+import { CreateOperationRoutingComponent } from './create-operation-routing/create-operation-routing.component';
 
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        LayoutModule,
-        IconsModule,
-        InputsModule,
-        LabelModule,
-        ButtonsModule,
-        DropDownsModule,
-        GridModule,
-        OperationalBomModule
-    ],
-    declarations: [AppComponent],
-    bootstrap:    [AppComponent]
+  declarations: [
+    AppComponent,
+    OperationBomHomeComponent,
+    CreateOperationRoutingComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    LayoutModule,
+    IconsModule,
+    InputsModule,
+    LabelModule,
+    ButtonsModule,
+    DropDownsModule,
+    GridModule,
+    AppRoutingModule
+  ],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
