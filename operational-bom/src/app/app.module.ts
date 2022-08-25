@@ -14,13 +14,17 @@ import { AppRoutingModule } from './app-routing-module';
 import { OperationBomHomeComponent } from './operation-bom-home/operation-bom-home.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { CreateOperationRoutingComponent } from './create-operation-routing/create-operation-routing.component';
+import { CreateOpBomComponent } from './create-op-bom/create-op-bom.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     OperationBomHomeComponent,
-    CreateOperationRoutingComponent
+    CreateOperationRoutingComponent,
+    CreateOpBomComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { CreateOperationRoutingComponent } from './create-operation-routing/crea
     ButtonsModule,
     DropDownsModule,
     GridModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AgGridModule,
+    HttpClientModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap: [AppComponent]

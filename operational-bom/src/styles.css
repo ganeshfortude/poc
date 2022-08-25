@@ -1,5 +1,11 @@
-
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import '~ag-grid-community/dist/styles/ag-theme-alpine.css';
 /* Add application styles & imports to this file! */
+
+.custom-cell-span {
+  background-color: white !important;
+  border: 1px solid #dde2eb !important;
+}
 
 body {
   font-family: 'RobotoRegular', Helvetica, Arial, sans-serif;
@@ -13,7 +19,7 @@ app-root {
   padding: 30px;
 }
 
-app-root > .k-icon.k-i-loading {
+app-root>.k-icon.k-i-loading {
   font-size: 64px;
   position: absolute;
   top: 50%;
