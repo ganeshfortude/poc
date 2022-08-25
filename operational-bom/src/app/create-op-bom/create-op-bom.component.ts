@@ -82,26 +82,28 @@ export class CreateOpBomComponent implements OnInit {
       var fromIndex = immutableStore.indexOf(movingData);
       var toIndex = immutableStore.indexOf(overData);
       var newStore = immutableStore.slice();
-      moveInArray(newStore, fromIndex, toIndex);
+      moveInArray(newStore, fromIndex, toIndex, event.vDirection);
       immutableStore = newStore;
       this.gridApi.setRowData(newStore);
       this.gridApi.clearFocusedCell();
     }
-    function moveInArray(arr: any[], fromIndex: number, toIndex: number) {
+    function moveInArray(arr: any[], fromIndex: number, toIndex: number, direction: string) {
       var count = sampleJobGroups.find((ele) => ele.jobGroup == arr[fromIndex].jobGroup).operations.length;
-
-      console.log("to index", toIndex);
 
       if (arr[fromIndex].jobGroup == arr[toIndex].jobGroup) toIndex++;
       var calculatedToIndex = -1;
 
-      immutableStore.forEach((ele, i) => {
-        console.log(ele.jobGroup + "==" + arr[toIndex].jobGroup, i);
-        if (ele.jobGroup == arr[toIndex].jobGroup) calculatedToIndex = i+1;
-      });
-      if (calculatedToIndex == -1) calculatedToIndex = toIndex;
+      for (let [i, ele] of immutableStore.entries()) {
+        if (ele.jobGroup == arr[toIndex].jobGroup) {
+          if (direction == "up") {
+            calculatedToIndex = i;
+            break;
+          }
+          calculatedToIndex = i + 1;
+        }
+      }
 
-      console.log("Calculted to index", calculatedToIndex);
+      if (calculatedToIndex == -1) calculatedToIndex = toIndex;
 
       var element = arr.splice(fromIndex, count);
       arr.splice(calculatedToIndex, 0, ...element);
