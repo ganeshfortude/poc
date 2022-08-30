@@ -5,6 +5,8 @@
 .custom-cell-span {
   background-color: white !important;
   border: 1px solid #dde2eb !important;
+  z-index: 1000 !important;
+  padding: 25px;
 }
 
 body {

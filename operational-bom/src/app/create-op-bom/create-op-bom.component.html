@@ -1,83 +1,74 @@
-<kendo-grid [data]="gridData" [height]="300">
+<h4>Create operation routing</h4>
+<kendo-gridlayout [gap]="{ rows: 10, cols: 30 }" [rows]="[
+          { height: 40 },
+          { height: 40 }
+        ]"
+  [cols]="[{ width: 80 }, { width: 270 }, { width: 150 }, { width: 270 }, { width: 80 }, { width: 270 }, { width: 150 }, { width: 270 }]">
 
-  <kendo-grid-column title="Job Group"></kendo-grid-column>
-  <kendo-grid-column title="Operation Id"></kendo-grid-column>
-  <kendo-grid-column title="Operation Name"></kendo-grid-column>
-  <kendo-grid-column title="Operation Type"></kendo-grid-column>
-  <kendo-grid-column title="Department"></kendo-grid-column>
-  <kendo-grid-column title="Department"></kendo-grid-column>
-  <kendo-grid-column title="SMV"></kendo-grid-column>
-  <kendo-grid-column title="Sequence/Parallel"></kendo-grid-column>
+  <kendo-gridlayout-item [row]="1" [col]="1">
+    <kendo-label text="Style">
+    </kendo-label>
+  </kendo-gridlayout-item>
 
-  <ng-template kendoGridDetailTemplate let-dataItem>
-    <tr *ngFor="let item of dataItem.operations">
-      <td kendogridcell [attr.rowspan]="dataItem.operations.length">{{ dataItem.jobGroup }}</td>
-      <td>{{ item.operationId }}</td>
-      <td>{{ item.operationName }}</td>
-      <td>{{ item.operationType }}</td>
-      <td>{{ item.department }}</td>
-      <td>{{ item.smv }}</td>
-      <td>{{ item.sequence }}</td>
-    </tr>
-  </ng-template>
+  <kendo-gridlayout-item [row]="1" [col]="2">
+    <kendo-dropdownlist [data]="[]" value="" placeholder="Style A">
+    </kendo-dropdownlist>
+  </kendo-gridlayout-item>
 
-  <!-- <kendo-grid-column title="Job Group" field="jobGroup">
-        <ng-template kendoGridCellTemplate>
-            <kendo-grid-column field="operationId" title="Operation Id">
-            </kendo-grid-column>
-        </ng-template>
-    </kendo-grid-column> -->
-  <!-- 
-  <kendo-grid-column
-    field="operationId"
-    title="Operation Id"
-    [width]="150"
-    [headerStyle]="{ 'background-color': '#32a852' }"
-    [headerClass]="'headerCustomClass'"
-  >
-  </kendo-grid-column>
-  <kendo-grid-column
-    field="operationName"
-    title="Operation Name"
-    [headerStyle]="{ 'background-color': '#32a852' }"
-    [headerClass]="'headerCustomClass'"
-  >
-  </kendo-grid-column>
-  <kendo-grid-column
-    field="operationType"
-    title="Operation Type"
-    [headerStyle]="{ 'background-color': '#32a852' }"
-    [headerClass]="'headerCustomClass'"
-  >
-  </kendo-grid-column>
-  <kendo-grid-column
-    field="department"
-    title="Department"
-    [headerStyle]="{ 'background-color': '#32a852' }"
-    [headerClass]="'headerCustomClass'"
-  >
-  </kendo-grid-column>
-  <kendo-grid-column
-    field="smv"
-    title="SMV"
-    [headerStyle]="{ 'background-color': '#32a852' }"
-    [headerClass]="'headerCustomClass'"
-  >
-  </kendo-grid-column>
-  <kendo-grid-column
-    field="sequence"
-    title="Sequence/Parallel"
-    [headerStyle]="{ 'background-color': '#32a852' }"
-    [headerClass]="'headerCustomClass'"
-  >
-  </kendo-grid-column> -->
-</kendo-grid>
+  <kendo-gridlayout-item [row]="1" [col]="3">
+    <kendo-label text="Structure type">
+    </kendo-label>
+  </kendo-gridlayout-item>
 
-<br>
-<br>
-<br>
+  <kendo-gridlayout-item [row]="1" [col]="4">
+    <kendo-dropdownlist [data]="[]" value="" placeholder="0001">
+    </kendo-dropdownlist>
+  </kendo-gridlayout-item>
 
-<ag-grid-angular style="width: 1400px; height: 500px;" class="ag-theme-alpine" [rowData]="rowData"
+  <kendo-gridlayout-item [row]="1" [col]="5">
+    <kendo-label text="Colour">
+    </kendo-label>
+  </kendo-gridlayout-item>
+
+  <kendo-gridlayout-item [row]="1" [col]="6">
+    <kendo-dropdownlist [data]="[]" value="" placeholder="Red">
+    </kendo-dropdownlist>
+  </kendo-gridlayout-item>
+
+  <kendo-gridlayout-item [row]="1" [col]="8">
+    <button kendoButton [primary]="true">
+      RESET ALL
+    </button>
+  </kendo-gridlayout-item>
+
+  <kendo-gridlayout-item [row]="2" [col]="1">
+    <kendo-label text="Template">
+    </kendo-label>
+  </kendo-gridlayout-item>
+
+  <kendo-gridlayout-item [row]="2" [col]="2">
+    <kendo-dropdownlist [data]="[]" value="" placeholder="Template B">
+    </kendo-dropdownlist>
+  </kendo-gridlayout-item>
+
+</kendo-gridlayout>
+
+<ag-grid-angular style="width: 1610px; height: 500px;" class="ag-theme-alpine" [rowData]="rowData"
   [columnDefs]="columnDefs" [suppressRowTransform]="true" (rowDragMove)="onRowDragMove($event)"
-  (gridReady)="onGridReady($event)" [animateRows]="true" [getRowId]="getRowId" [rowData]="rowData">
+  (gridReady)="onGridReady($event)" [animateRows]="true" [getRowId]="getRowId" [rowData]="rowData"
+  [frameworkComponents]="frameworkComponents">
 </ag-grid-angular>
+
+<kendo-gridlayout [gap]="{ rows: 10, cols: 30 }" [rows]="[
+          { height: 10 },
+          { height: 40 }
+        ]"
+  [cols]="[{ width: 80 }, { width: 270 }, { width: 150 }, { width: 270 }, { width: 80 }, { width: 270 }, { width: 150 }, { width: 270 }]">
+
+  <kendo-gridlayout-item [row]="2" [col]="8">
+    <button kendoButton [primary]="true">
+      CREATE
+    </button>
+  </kendo-gridlayout-item>
+
+</kendo-gridlayout>

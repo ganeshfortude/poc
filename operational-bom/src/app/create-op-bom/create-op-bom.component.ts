@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ColDef, ColumnApi, GetRowIdParams, GridApi, GridReadyEvent, RowDragEndEvent, RowDragEnterEvent, RowDragLeaveEvent, RowDragMoveEvent } from 'ag-grid-community';
+import { KendoDropdownList } from '../custom-render-components/kendo-dropdown-list';
+import { KendoNumbericInput } from '../custom-render-components/kendo-numeric-input';
 import { sampleJobGroups } from './sample-job-groups';
 
 @Component({
@@ -10,11 +12,12 @@ import { sampleJobGroups } from './sample-job-groups';
 })
 export class CreateOpBomComponent implements OnInit {
 
-  public gridData: unknown[];
   public rowData: unknown[];
 
   private gridApi!: GridApi;
   private gridColumnApi!: ColumnApi;
+
+  frameworkComponents: any;
 
   public columnDefs: ColDef[] = [
     {
@@ -31,7 +34,16 @@ export class CreateOpBomComponent implements OnInit {
     { field: 'operationName' },
     { field: 'operationType' },
     { field: 'department' },
-    { field: 'smv' },
+    {
+      field: 'smv',
+      cellRenderer: 'kendoNumericRenderer',
+    },
+    {
+      headerName: 'Send to FR',
+      cellRenderer: params => params.data.sendToFR ? '<span class="k-icon k-i-check"></span>' : '<span class="k-icon k-i-close"></span>',
+      cellStyle: { display: 'flex', 'justify-content': 'center', 'align-items': 'center' }
+
+    },
     {
       field: 'sequence',
       rowSpan: params => params.data.rowSpan ? params.data.rowSpan : 1,
@@ -39,28 +51,22 @@ export class CreateOpBomComponent implements OnInit {
         'custom-cell-span': params => {
           return params.data.rowSpan > 1
         },
-      }
+      },
+      cellRenderer: 'kendoDropdownRenderer',
+      cellRendererParams: {
+        items: ["SQ"]
+      },
     }
   ];
-
-  // columnDefs: ColDef[] = [
-  //   { field: 'make' },
-  //   { field: 'model' },
-  //   { field: 'price' }
-  // ];
-
-  // rowData = [
-  //   { make: 'Toyota', model: 'Celica', price: 35000 },
-  //   { make: 'Ford', model: 'Mondeo', price: 32000 },
-  //   { make: 'Porsche', model: 'Boxster', price: 72000 }
-  // ];
 
 
   constructor(private http: HttpClient, private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.gridData = sampleJobGroups;
-    // this.rowData = this.processData(sampleJobGroups);
+    this.frameworkComponents = {
+      kendoNumericRenderer: KendoNumbericInput,
+      kendoDropdownRenderer: KendoDropdownList
+    }
   }
 
   onRowDragEnd(e: RowDragEndEvent) {
@@ -82,26 +88,28 @@ export class CreateOpBomComponent implements OnInit {
       var fromIndex = immutableStore.indexOf(movingData);
       var toIndex = immutableStore.indexOf(overData);
       var newStore = immutableStore.slice();
-      moveInArray(newStore, fromIndex, toIndex);
+      moveInArray(newStore, fromIndex, toIndex, event.vDirection);
       immutableStore = newStore;
       this.gridApi.setRowData(newStore);
       this.gridApi.clearFocusedCell();
     }
-    function moveInArray(arr: any[], fromIndex: number, toIndex: number) {
+    function moveInArray(arr: any[], fromIndex: number, toIndex: number, direction: string) {
       var count = sampleJobGroups.find((ele) => ele.jobGroup == arr[fromIndex].jobGroup).operations.length;
-
-      console.log("to index", toIndex);
 
       if (arr[fromIndex].jobGroup == arr[toIndex].jobGroup) toIndex++;
       var calculatedToIndex = -1;
 
-      immutableStore.forEach((ele, i) => {
-        console.log(ele.jobGroup + "==" + arr[toIndex].jobGroup, i);
-        if (ele.jobGroup == arr[toIndex].jobGroup) calculatedToIndex = i+1;
-      });
-      if (calculatedToIndex == -1) calculatedToIndex = toIndex;
+      for (let [i, ele] of immutableStore.entries()) {
+        if (ele.jobGroup == arr[toIndex].jobGroup) {
+          if (direction == "up") {
+            calculatedToIndex = i;
+            break;
+          }
+          calculatedToIndex = i + 1;
+        }
+      }
 
-      console.log("Calculted to index", calculatedToIndex);
+      if (calculatedToIndex == -1) calculatedToIndex = toIndex;
 
       var element = arr.splice(fromIndex, count);
       arr.splice(calculatedToIndex, 0, ...element);

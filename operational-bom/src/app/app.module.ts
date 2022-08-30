@@ -17,6 +17,8 @@ import { CreateOperationRoutingComponent } from './create-operation-routing/crea
 import { CreateOpBomComponent } from './create-op-bom/create-op-bom.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http'
+import { KendoNumbericInput } from './custom-render-components/kendo-numeric-input';
+import { KendoDropdownList } from './custom-render-components/kendo-dropdown-list';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { HttpClientModule } from '@angular/common/http'
     AppComponent,
     OperationBomHomeComponent,
     CreateOperationRoutingComponent,
-    CreateOpBomComponent
+    CreateOpBomComponent,
+    KendoNumbericInput,
+    KendoDropdownList
   ],
   imports: [
     BrowserModule,

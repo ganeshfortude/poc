@@ -3,10 +3,6 @@
     justify-content: left;
 }
 
-kendo-tabstrip {
-    width: 1400px;
-}
-
 .content {
     padding: 30px;
     display: flex;
