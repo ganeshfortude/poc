@@ -17,6 +17,10 @@ import { CreateOperationRoutingComponent } from './create-operation-routing/crea
 import { CreateOpBomComponent } from './create-op-bom/create-op-bom.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http'
+import { KendoNumbericInput } from './custom-render-components/kendo-numeric-input';
+import { KendoDropdownList } from './custom-render-components/kendo-dropdown-list';
+import { SelectOpTemplateComponent } from './select-op-template/select-op-template.component';
+import { DialogsModule } from "@progress/kendo-angular-dialog";
 
 
 @NgModule({
@@ -24,7 +28,10 @@ import { HttpClientModule } from '@angular/common/http'
     AppComponent,
     OperationBomHomeComponent,
     CreateOperationRoutingComponent,
-    CreateOpBomComponent
+    CreateOpBomComponent,
+    KendoNumbericInput,
+    KendoDropdownList,
+    SelectOpTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +46,10 @@ import { HttpClientModule } from '@angular/common/http'
     GridModule,
     AppRoutingModule,
     AgGridModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogsModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' }],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

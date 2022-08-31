@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ColDef, ColumnApi, GetRowIdParams, GridApi, GridReadyEvent, RowDragEndEvent, RowDragEnterEvent, RowDragLeaveEvent, RowDragMoveEvent } from 'ag-grid-community';
+import { KendoDropdownList } from '../custom-render-components/kendo-dropdown-list';
+import { KendoNumbericInput } from '../custom-render-components/kendo-numeric-input';
 import { sampleJobGroups } from './sample-job-groups';
 
 @Component({
@@ -10,11 +12,14 @@ import { sampleJobGroups } from './sample-job-groups';
 })
 export class CreateOpBomComponent implements OnInit {
 
-  public gridData: unknown[];
   public rowData: unknown[];
+  public gridData: unknown[] = [];
 
   private gridApi!: GridApi;
   private gridColumnApi!: ColumnApi;
+
+  frameworkComponents: any;
+  public opTemplateModal: boolean = false;
 
   public columnDefs: ColDef[] = [
     {
@@ -31,7 +36,16 @@ export class CreateOpBomComponent implements OnInit {
     { field: 'operationName' },
     { field: 'operationType' },
     { field: 'department' },
-    { field: 'smv' },
+    {
+      field: 'smv',
+      cellRenderer: 'kendoNumericRenderer',
+    },
+    {
+      headerName: 'Send to FR',
+      cellRenderer: params => params.data.sendToFR ? '<span class="k-icon k-i-check"></span>' : '<span class="k-icon k-i-close"></span>',
+      cellStyle: { display: 'flex', 'justify-content': 'center', 'align-items': 'center' }
+
+    },
     {
       field: 'sequence',
       rowSpan: params => params.data.rowSpan ? params.data.rowSpan : 1,
@@ -39,28 +53,31 @@ export class CreateOpBomComponent implements OnInit {
         'custom-cell-span': params => {
           return params.data.rowSpan > 1
         },
-      }
+      },
+      cellRenderer: 'kendoDropdownRenderer',
+      cellRendererParams: {
+        items: ["SQ"]
+      },
     }
   ];
-
-  // columnDefs: ColDef[] = [
-  //   { field: 'make' },
-  //   { field: 'model' },
-  //   { field: 'price' }
-  // ];
-
-  // rowData = [
-  //   { make: 'Toyota', model: 'Celica', price: 35000 },
-  //   { make: 'Ford', model: 'Mondeo', price: 32000 },
-  //   { make: 'Porsche', model: 'Boxster', price: 72000 }
-  // ];
 
 
   constructor(private http: HttpClient, private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.gridData = sampleJobGroups;
-    // this.rowData = this.processData(sampleJobGroups);
+    this.frameworkComponents = {
+      kendoNumericRenderer: KendoNumbericInput,
+      kendoDropdownRenderer: KendoDropdownList
+    }
+  }
+
+  public open() {
+    this.opTemplateModal = true;
+    console.log("something")
+  }
+
+  public close() {
+    this.opTemplateModal = false;
   }
 
   onRowDragEnd(e: RowDragEndEvent) {

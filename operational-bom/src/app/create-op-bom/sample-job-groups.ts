@@ -6,7 +6,9 @@ export interface SampleJobGroups {
     operationType: string,
     department: string,
     smv: number,
-    sequence: string
+    sequence: string,
+    disabledSeq: boolean;
+    sendToFR: boolean
   }[]
 }
 
@@ -20,7 +22,9 @@ export const sampleJobGroups: SampleJobGroups[] = [
         operationType: 'Default',
         department: 'Cutting',
         smv: 5,
-        sequence: 'SQ'
+        sequence: 'SQ',
+        disabledSeq: true,
+        sendToFR: true
       },
       {
         operationId: 2,
@@ -28,7 +32,9 @@ export const sampleJobGroups: SampleJobGroups[] = [
         operationType: 'Default',
         department: 'Cutting',
         smv: 5,
-        sequence: 'SQ'
+        sequence: 'SQ',
+        disabledSeq: false,
+        sendToFR: false
       }
     ]
   },
@@ -41,7 +47,9 @@ export const sampleJobGroups: SampleJobGroups[] = [
         operationType: 'Default',
         department: 'Cutting',
         smv: 5,
-        sequence: 'SQ'
+        sequence: 'SQ',
+        disabledSeq: false,
+        sendToFR: true
       },
       {
         operationId: 4,
@@ -49,7 +57,9 @@ export const sampleJobGroups: SampleJobGroups[] = [
         operationType: 'Default',
         department: 'Cutting',
         smv: 5,
-        sequence: 'SQ'
+        sequence: 'SQ',
+        disabledSeq: false,
+        sendToFR: false
       }
     ]
   },
@@ -62,7 +72,9 @@ export const sampleJobGroups: SampleJobGroups[] = [
         operationType: 'Default',
         department: 'Cutting',
         smv: 5,
-        sequence: 'SQ'
+        sequence: 'SQ',
+        disabledSeq: false,
+        sendToFR: true
       }
     ]
   },
@@ -75,7 +87,9 @@ export const sampleJobGroups: SampleJobGroups[] = [
         operationType: 'Default',
         department: 'Cutting',
         smv: 5,
-        sequence: 'SQ'
+        sequence: 'SQ',
+        disabledSeq: false,
+        sendToFR: true
       },
       {
         operationId: 8,
@@ -83,7 +97,34 @@ export const sampleJobGroups: SampleJobGroups[] = [
         operationType: 'Default',
         department: 'Cutting',
         smv: 5,
-        sequence: 'SQ'
+        sequence: 'SQ',
+        disabledSeq: false,
+        sendToFR: true
+      }
+    ]
+  },
+  {
+    jobGroup: 'JG-5',
+    operations: [
+      {
+        operationId: 9,
+        operationName: 'Bundle',
+        operationType: 'Default',
+        department: 'Cutting',
+        smv: 5,
+        sequence: 'SQ',
+        disabledSeq: false,
+        sendToFR: true
+      },
+      {
+        operationId: 10,
+        operationName: 'Bundle',
+        operationType: 'Default',
+        department: 'Cutting',
+        smv: 5,
+        sequence: 'SQ',
+        disabledSeq: false,
+        sendToFR: true
       }
     ]
   }

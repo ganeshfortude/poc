@@ -1,0 +1,63 @@
+<kendo-dialog *ngIf="opTemplateModal" (close)="close()" [width]="1200" [height]="750">
+    <kendo-dialog-titlebar style="background-color: white; color: black;">
+    </kendo-dialog-titlebar>
+    <h4>Select operation template</h4>
+    <kendo-gridlayout [gap]="{ rows: 10, cols: 30 }" [rows]="[
+    { height: 20 },
+    { height: 50 }
+  ]" [cols]="[{ width: 80 }, { width: 270 }, { width: 50 }, { width: 50 }, { width: 100 }]">
+
+        <kendo-gridlayout-item [row]="2" [col]="1">
+            <kendo-label text="Operation">
+            </kendo-label>
+        </kendo-gridlayout-item>
+
+        <kendo-gridlayout-item [row]="2" [col]="2">
+            <kendo-dropdownlist [data]="[]" value="" placeholder="Style A">
+            </kendo-dropdownlist>
+        </kendo-gridlayout-item>
+
+        <kendo-gridlayout-item [row]="2" [col]="4">
+            <span class="k-icon k-i-zoom" style="font-size: 30px;cursor: pointer;"></span>
+        </kendo-gridlayout-item>
+
+        <kendo-gridlayout-item [row]="2" [col]="5">
+            <button kendoButton [primary]="true">
+                RESET ALL
+            </button>
+        </kendo-gridlayout-item>
+
+    </kendo-gridlayout>
+
+    <kendo-grid [data]="gridData" [pageable]="true">
+
+        <kendo-grid-column title="Operation template name" field="operationName">
+        </kendo-grid-column>
+
+        <kendo-grid-column field="operations" title="Operation">
+            <div kendoTooltip>
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    <span [title]="dataItem.operations.slice().join(', ')">
+                        {{ truncateValue(dataItem.operations) }}
+                    </span>
+                </ng-template>
+            </div>
+        </kendo-grid-column>
+
+    </kendo-grid>
+
+
+    <kendo-gridlayout [gap]="{ rows: 10, cols: 30 }" [rows]="[
+            { height: 10 },
+            { height: 40 }
+          ]" [cols]="[{ width: 1000 }, { width: 100 }]">
+
+        <kendo-gridlayout-item [row]="2" [col]="2">
+            <button kendoButton [primary]="true">
+                CONFIRM
+            </button>
+        </kendo-gridlayout-item>
+
+    </kendo-gridlayout>
+
+</kendo-dialog>
